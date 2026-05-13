@@ -1,6 +1,6 @@
 # 4plus1 Architecture Skills
 
-AI assistant rules and skills for software architecture modeling across Codex, Claude Code, and Cursor.
+AI assistant rules and skills for software architecture modeling across Codex, Claude Code, Cursor, and OpenCode.
 
 This project packages a 4+1 architecture modeling workflow into three assistant-specific formats:
 
@@ -8,6 +8,7 @@ This project packages a 4+1 architecture modeling workflow into three assistant-
 codex-skills/      # Codex native SKILL.md format
 claude/            # Claude Code CLAUDE.md + docs format
 .cursor/rules/     # Cursor MDC rules format
+opencode/          # OpenCode AGENTS.md + docs format
 ```
 
 The rules cover:
