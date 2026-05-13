@@ -1,0 +1,41 @@
+---
+description: "Use for reviewing 4+1 architecture model consistency and traceability."
+globs: ["**/*.md", "**/*.puml", "**/*.plantuml", "**/*.mmd", "**/*.mermaid"]
+alwaysApply: false
+---
+
+# Architecture Consistency Check Rule
+
+When the user asks for a review or consistency check, lead with findings ordered by severity.
+
+Severity:
+
+- P1: broken traceability or wrong relationship that invalidates the model.
+- P2: missing required element, orphan, duplicate, or hierarchy violation.
+- P3: naming, clarity, or optional completeness issue.
+
+Check:
+
+- Element names are not empty.
+- Elements match the hierarchy expected by their view.
+- No orphan architecture elements.
+- No duplicate same-name same-type siblings under the same parent.
+- Logical structural relations use Composition or Aggregation.
+- Logical-to-interface relations use Usage, Dependency, or Realization.
+- Code-to-logical mapping uses Manifest.
+- Service, MicroService, and Component elements have code Manifest links.
+- Build elements use Build From to code.
+- Delivery elements contain build outputs using Composition or Aggregation.
+- Delivery or executable targets deploy with Deployed To or valid containment.
+- Context model has exactly one System.
+- Actor and ExternalSystem interact with System through interfaces.
+- Runtime models reference or instantiate logical elements rather than creating new ones.
+
+Finding format:
+
+```text
+[Severity] Rule: <short rule name>
+Evidence: <element/relationship/diagram>
+Why it matters: <impact>
+Fix: <specific modeling change>
+```

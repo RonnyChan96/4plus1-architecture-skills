@@ -1,0 +1,29 @@
+---
+description: "Use for 4+1 context modeling: system boundary, actors, external systems, and interface-mediated interactions."
+globs: ["**/*.md", "**/*.puml", "**/*.plantuml", "**/*.mmd", "**/*.mermaid"]
+alwaysApply: false
+---
+
+# Context Model Rule
+
+When the user asks to draw or review a context model, define the system boundary first.
+
+Use exactly one `System`. Model people, organizations, devices, services, and third-party dependencies outside the boundary as `Actor` or `ExternalSystem`.
+
+Do not connect Actor or ExternalSystem directly to System to express interaction. Use interfaces:
+
+- System provides an interface; Actor or ExternalSystem uses or depends on it.
+- Actor or ExternalSystem provides an interface; System uses or depends on it.
+
+Output:
+
+- Context diagram code or modeling instructions.
+- External participant table.
+- Interface table with provider, consumer, purpose, and assumptions.
+- Boundary decisions and open questions.
+
+Validate:
+
+- Exactly one System.
+- Every external interaction crosses an Interface.
+- External participants are not modeled as internal logical components.

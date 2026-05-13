@@ -1,0 +1,6 @@
+interface:
+  display_name: "UML Sequence Diagram"
+  short_description: "Create precise UML sequence diagrams."
+  default_prompt: "Use $uml-sequence-diagram to model this interaction as a UML sequence diagram."
+policy:
+  allow_implicit_invocation: true

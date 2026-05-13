@@ -1,0 +1,6 @@
+interface:
+  display_name: "Logic-Code-Deployment Trace"
+  short_description: "Trace logic to code, build, and deploy."
+  default_prompt: "Use $logic-code-deployment-trace to map logical elements through code, build, delivery, and deployment."
+policy:
+  allow_implicit_invocation: true

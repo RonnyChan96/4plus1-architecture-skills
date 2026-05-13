@@ -1,0 +1,6 @@
+interface:
+  display_name: "Context Model"
+  short_description: "Define system boundary and interfaces."
+  default_prompt: "Use $context-model to draw the system context and boundary interfaces."
+policy:
+  allow_implicit_invocation: true

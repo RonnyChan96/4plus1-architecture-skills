@@ -1,0 +1,6 @@
+interface:
+  display_name: "4+1 Architecture View"
+  short_description: "Draw coherent 4+1 architecture views."
+  default_prompt: "Use $4plus1-architecture-view to produce a coherent 4+1 architecture model for this system."
+policy:
+  allow_implicit_invocation: true

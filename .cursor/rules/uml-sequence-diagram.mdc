@@ -1,0 +1,35 @@
+---
+description: "Use for UML sequence diagrams with lifelines, messages, activations, combined fragments, and gates."
+globs: ["**/*.md", "**/*.puml", "**/*.plantuml", "**/*.mmd", "**/*.mermaid"]
+alwaysApply: false
+---
+
+# UML Sequence Diagram Rule
+
+When the user asks for a sequence diagram, model one observable scenario, not a component inventory.
+
+Identify trigger, participants, main success path, branches, loops, parallel behavior, retries, timeouts, failures, and payloads that affect architecture decisions.
+
+Use:
+
+- Lifelines for participants.
+- Messages for calls, events, responses, async notifications, creates, or destroys.
+- Activation bars when they clarify responsibility.
+- Combined fragments for control logic.
+- Diagram gates when a message enters or exits a referenced interaction or fragment boundary.
+
+Fragment selection:
+
+- `alt`: if/else-if/switch.
+- `opt`: optional branch.
+- `break`: interrupt remaining behavior.
+- `loop`: repetition.
+- `par`: parallel work.
+- `critical`: non-interleavable section.
+- `seq`: weak order.
+- `strict`: strict order.
+- `consider`, `ignore`, `assert`, `neg`: relevance or validity constraints.
+
+Prefer PlantUML unless Mermaid is sufficient.
+
+Output diagram code, participant-to-model mapping, assumptions, and missing/error-path notes.

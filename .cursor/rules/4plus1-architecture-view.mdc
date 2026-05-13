@@ -1,0 +1,33 @@
+---
+description: "Use for drawing or reviewing coherent 4+1 architecture views."
+globs: ["**/*.md", "**/*.puml", "**/*.plantuml", "**/*.mmd", "**/*.mermaid"]
+alwaysApply: false
+---
+
+# 4+1 Architecture View Rule
+
+When the user asks for 4+1 architecture work, start from the system boundary and architecture-significant scenarios.
+
+Create or review views in this order:
+
+1. Use-case view: context model, use-case model, key sequence diagrams.
+2. Logical view: logical model, data model when needed, optional domain/function models, technical model.
+3. Development view: code model and build model.
+4. Deployment view: delivery model and deployment model.
+5. Runtime view: runtime interactions when architecture-significant.
+
+Logical granularity:
+
+- Componentized systems: at least Component level.
+- Service-oriented systems: at least MicroService level.
+- Modular systems: at least Module level.
+
+Rules:
+
+- Do not draw disconnected diagrams.
+- Logical elements are the baseline for code, build, deployment, and runtime views.
+- Use Manifest for code-to-logical mapping.
+- Use Build From for build-to-code mapping.
+- Use Deployed To or valid containment for artifact-to-deployment mapping.
+
+Output view inventory, diagram code or modeling instructions, scenario-to-deployment trace summary, assumptions, and consistency gaps.

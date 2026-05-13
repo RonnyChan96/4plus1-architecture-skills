@@ -1,0 +1,7 @@
+# Do not redistribute vendor documentation or local reference copies.
+*.pdf
+*.PDF
+华为软件建模用户指南-pdf.pdf
+
+# Local OS/editor files.
+.DS_Store

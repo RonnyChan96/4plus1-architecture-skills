@@ -1,0 +1,43 @@
+---
+description: "Use for tracing logical elements to code repositories, build outputs, delivery packages, and deployment targets."
+globs: ["**/*.md", "**/*.puml", "**/*.plantuml", "**/*.mmd", "**/*.mermaid"]
+alwaysApply: false
+---
+
+# Logic-Code-Deployment Trace Rule
+
+When the user asks for architecture traceability, build this chain:
+
+```text
+Use Case / Scenario
+-> Logical element
+-> Code element
+-> Build element
+-> Delivery element
+-> Deployment element
+-> Runtime interaction
+```
+
+Relationship semantics:
+
+- Code element -> logical element: `Manifest`.
+- Build element -> code element: `Build From`.
+- Delivery target contains build output or external software: `Composition` or `Aggregation`.
+- Delivery or executable target -> deployment element: `Deployed To`.
+- Deployment communication path: `CommunicationPath`.
+
+Flag gaps:
+
+- Logical element has no code Manifest.
+- Code element maps to multiple logical elements without explanation.
+- Repo exists but is not configured.
+- Build target has no Build From source.
+- Delivery target contains no build output.
+- Deployable artifact has no deployment target.
+- Runtime interaction references a missing logical element.
+
+Output a trace table:
+
+```text
+Scenario | Logical element | Code | Build output | Delivery target | Deployment target | Runtime note | Gaps
+```
