@@ -11,23 +11,48 @@ When the user asks for 4+1 architecture work, start from the system boundary and
 Create or review views in this order:
 
 1. Use-case view: context model, use-case model, key sequence diagrams.
-2. Logical view: logical model, data model when needed, optional domain/function models, technical model.
+2. Logical view: 0-level and 1-level logical models, data model when needed, optional domain/function models, technical model.
 3. Development view: code model and build model.
 4. Deployment view: delivery model and deployment model.
-5. Runtime view: runtime interactions when architecture-significant.
+5. Runtime view: runtime model and runtime sequence diagram.
+
+Context/use-case rules:
+
+- Context model only contains Actor, System, ExternalSystem, and Interface-like elements.
+- Do not expand internal services, components, modules, databases, middleware, or deployment nodes in the context model.
+- System interaction with Actor or ExternalSystem is expressed through Interface plus Usage, Realization, and where needed Association.
+- Use-case model Actor elements must come from the context model; do not create new Actor elements there.
+- Actor-to-UseCase interaction uses Use.
+- UseCase-to-UseCase relationships may use Include and Extend.
 
 Logical granularity:
 
-- Componentized systems: at least Component level.
 - Service-oriented systems: at least MicroService level.
+- Componentized systems: at least Component level.
 - Modular systems: at least Module level.
+- Use Service/MS for service systems, Component for component systems, and Module for modular systems.
+- Domain, Layer, and Plane are grouping or auxiliary elements. They must not replace implementable objects.
 
 Rules:
 
 - Do not draw disconnected diagrams.
+- Logical view must include at least:
+  - 0-level model: System/SubSystem, relationships may be sparse.
+  - 1-level model: architecture objects and relationships are required.
+- Separate business logical model and technical model. Databases, middleware, frameworks, operating systems, platforms, and infrastructure belong in the technical model.
 - Logical elements are the baseline for code, build, deployment, and runtime views.
-- Use Manifest for code-to-logical mapping.
-- Use Build From for build-to-code mapping.
+- In code models, logical elements must be referenced from the logical model.
+- Use Manifest for code-to-logical mapping. Direction: code element -> logical element.
+- In build models, code elements must be referenced from the code model.
+- Use Build From for build-to-code mapping. Direction: build element -> code element.
+- Delivery model uses Release, Dlvr Trgt, Exec Trgt, ThirdParty, OperatingSystem, Package Tools, Composition, and Aggregation.
+- Deployment model uses Node, ExecEnv, Process, Zone, Deployed To, and CommunicationPath.
 - Use Deployed To or valid containment for artifact-to-deployment mapping.
+- Runtime sequence diagram is required for complete 4+1 output. Lifelines must come from context model Actor/ExternalSystem or logical model objects.
 
-Output view inventory, diagram code or modeling instructions, scenario-to-deployment trace summary, assumptions, and consistency gaps.
+Mermaid output:
+
+- Label nodes with CodeArts semantic stereotypes, for example `«System»`, `«Actor»`, `«ExternalSystem»`, `«Service»`, `«MS»`, `«Component»`, `«Module»`, `«Dir»`, `«Exec Trgt»`, `«Dlvr Trgt»`, `«Node»`, `«ExecEnv»`, `«Process»`.
+- After each diagram, state which edges should be created in CodeArts as Usage, Realization, Association, Use, Include, Extend, Manifest, Build From, Deployed To, or CommunicationPath.
+
+Output view inventory, diagram code or modeling instructions, scenario-to-deployment trace summary, CodeArts relationship mapping, assumptions, and consistency gaps.
